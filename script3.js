@@ -12,11 +12,11 @@ window.addEventListener('load', function() {
 
     // Flicker sequence
     function startFlickerSequence() {
-        gif.src = "images/tv-static.gif";
+        gif.src = "images/Tv-static.gif";
         setTimeout(() => {
             gif.src = "images/rick-roll.gif";
             setTimeout(() => {
-                gif.src = "images/tv-static.gif";
+                gif.src = "images/Tv-static.gif";
                 setTimeout(() => {
                     gif.src = "images/scifi.gif";
                 }, 1000); // Show content after the last flicker
