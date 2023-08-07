@@ -1,0 +1,241 @@
+/* Resetting default styles and setting initial dimensions */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Container for the entire page content */
+.page-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Full-page background image with zoom effect */
+.full-page-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('images/Widescreen\ tv\ 4k\ black.jpg') no-repeat center center fixed;
+    background-size: cover;
+    transition: background-size 1s ease-in-out;
+}
+
+/* Zoom animation for full-page background image */
+.full-page-image.zoomed {
+    animation: zoomAnimation 4s ease-in-out forwards;
+}
+
+/* Keyframes for zoom animation */
+@keyframes zoomAnimation {
+    0% {
+        background-size: 100%;
+    }
+    100% {
+        background-size: 600%;
+        background-position: 80% 15%
+    }
+}
+
+/* Transition layer for visual effects */
+.transition-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Show transition layer */
+.transition-layer.show {
+    opacity: 1;
+}
+
+/* Zoom button for the full-page image */
+.zoom-button {
+    position: absolute;
+    top: 95%;
+    left: 5%;
+    transform: translate(-50%, -50%);
+    padding: 0.5vw 1.5vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 1vw;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Show zoom button on hover over full-page image */
+.full-page-image:hover .zoom-button {
+    opacity: 1;
+}
+
+/* Hover effect for the zoom button */
+.zoom-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Styling for ASCII art */
+.ascii-art {
+    position: absolute;
+    top: 5%;
+    left: -5%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    white-space: pre-wrap;
+    color: white; /* Set text color to match your design */
+    text-align: center;
+    z-index: 2; /* Ensure the ASCII art is above the background */
+    pointer-events: none; /* Allow clicks to go through the ASCII art */
+    background: none; /* Remove any background */
+    font-size: 1.5vw; /* Adjust the font size as needed */
+    animation: openAnimation 2s ease-in-out forwards;
+    opacity: 0; /* Hide the ASCII art initially */
+}
+
+/* Keyframes for ASCII art opening animation */
+@keyframes openAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(-50%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation to hide ASCII art */
+.ascii-art.hidden {
+    animation: dissolveOutAnimation 1s ease-in-out forwards;
+}
+
+/* Keyframes for ASCII art dissolving animation */
+@keyframes dissolveOutAnimation {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50%);
+    }
+}
+
+/* Social media icons container */
+.icons-container {
+    position: absolute;
+    bottom: 95%;
+    left: 5%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1.5vw;
+    color: white;
+    z-index: 2;
+}
+
+/* Styling for individual icons in the container */
+.icons-container i {
+    font-size: 1.5vw;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Icon scaling effect on hover */
+.icons-container i:hover {
+    transform: scale(1.2);
+}
+
+/* Email icon container */
+.icons-container2 {
+    position: absolute;
+    bottom: 94%;
+    left: 97%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    color: white;
+    z-index: 2;
+}
+
+/* Styling for email icon */
+.icons-container2 i {
+    font-size: 2.5vw;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Icon scaling effect on hover */
+.icons-container2 i:hover {
+    transform: scale(1.2);
+}
+
+/* Message for phone users */
+.phone-message {
+    display: none; /* Initially hidden */
+    position: absolute;
+    bottom: 60%;
+    left: 40%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    font-size: 4vw; /* Adjust font size as needed */
+    z-index: 2;
+}
+
+/* Media query for screens with max width 768px (mobile devices) */
+@media screen and (max-width: 768px) {
+    /* Adjust the ASCII art font size for mobile */
+    .ascii-art {
+        font-size: 3vw; /* Increase font size for mobile */
+        position: absolute;
+        top: 5%;
+        left: -20%;
+        transform: translate(-50%, -50%);
+    }
+
+    /* Display phone message on mobile */
+    .phone-message {
+        display: block;
+    }
+
+    /* Hide zoom button on mobile */
+    .zoom-button {
+        display: none;
+    }
+
+    /* Adjust icon font size and position for mobile */
+    .icons-container i, .icons-container2 i {
+        font-size: 5vw;
+    }
+
+    .icons-container {
+        gap: 5vw;
+        position: absolute;
+        bottom: 95%;
+        left: 15%;
+        transform: translateX(-50%);
+    }
+
+    .icons-container2 {
+        position: absolute;
+        bottom: 95%;
+        left: 95%;
+        transform: translateX(-50%);
+    }
+
+    /* Add padding to the top for mobile layout */
+    .page-container {
+        padding-top: 0px;
+    }
+}

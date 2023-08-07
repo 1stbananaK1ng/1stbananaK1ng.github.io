@@ -1,0 +1,246 @@
+/* Reset default margin and padding for all elements */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* Set up the body and screen */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent content overflow */
+    background-color: #343A38;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Styling for the screen element */
+.screen {
+    position: relative;
+    width: 70%;
+    height: 94%;
+    background-image: radial-gradient(transparent 30%, black);
+    margin-top: 5vh;
+}
+
+/* Styling for the bezel, gif, and scan-bar elements */
+.bezel, .gif, .scan-bar {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+}
+
+/* Styling for the bezel element */
+.bezel {
+    box-shadow: 2px 2px 8px;
+    pointer-events: none;
+}
+
+/* Styling for the gif and scan-bar elements */
+.gif {
+    background-image: radial-gradient(transparent, black);
+    z-index: -1;
+}
+
+.gif, .scan-bar {
+    z-index: -1;
+}
+
+/* Styling for the scan-bar animation */
+.scan-bar {
+    animation: scan 3s infinite;
+}
+
+/* Styling for the scan animation keyframes */
+@keyframes scan {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+/* Styling for the transition overlay */
+#transitionOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity: 1; /* Start with full opacity */
+    pointer-events: none;
+    z-index: 9999;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Styling for the transition overlay when body has class 'loaded' */
+body.loaded #transitionOverlay {
+    opacity: 0; /* Fade out when the page is loaded */
+}
+
+/* Styling for the desktop icons container */
+.desktop-icons {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 100px);
+    gap: 20px;
+    z-index: 1;
+    opacity: 0; /* Start with icons hidden */
+    pointer-events: none; /* Disable interaction */
+    transition: opacity 0.3s;
+}
+
+/* Styling for individual desktop icons */
+.desktop-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em; /* Adjust the size as needed */
+    color: white; /* Icon color */
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 1vw;
+    width: 100px;
+    height: 100px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+/* Styling for desktop icons on hover */
+.desktop-icon:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Styling for popup overlay */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*background-color: rgba(0, 0, 0, 0.7);*/
+    z-index: 1000;
+    display: none;
+}
+
+/* Styling for popup window */
+.popup-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    background-color: white;
+    border: 2px solid #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+}
+
+/* Styling for popup header */
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+/* Styling for close button */
+.close-button {
+    cursor: pointer;
+}
+
+/* Styling for popup content */
+.popup-content {
+    margin-top: 10px;
+}
+
+/* Styling for bottom left button */
+.bottom-left-button {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* Styling for bottom left button on hover */
+.bottom-left-button:hover {
+    background-color: #111111;
+}
+
+/* Styling for centered image */
+.centered-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Styling for responsive text */
+.responsive-text {
+    font-size: 0.8vw; /* Adjust the font size using viewport units (vw) */
+    line-height: 1.6;
+    margin: 20px;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .screen {
+        position: relative;
+        width: 80%;
+        height: 50%;
+        background-image: radial-gradient(transparent 30%, black);
+        margin-top: 5vh;
+    }
+
+    .desktop-icons {
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 100px);
+        gap: 10px;
+        z-index: 1;
+        opacity: 0; /* Start with icons hidden */
+        pointer-events: none; /* Disable interaction */
+        transition: opacity 0.3s;
+    }
+    
+    .desktop-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1em; /* Adjust the size as needed */
+        color: white; /* Icon color */
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 1vw;
+        width: 50px;
+        height: 50px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+    
+    .responsive-text {
+        font-size: 1vw; /* Adjust font size for smaller screens */
+    }
+}
