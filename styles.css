@@ -184,13 +184,25 @@ body, html {
 .phone-message {
     display: none; /* Initially hidden */
     position: absolute;
-    bottom: 60%;
-    left: 40%;
-    transform: translateX(-50%);
+    bottom: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
     text-align: center;
     color: white;
-    font-size: 4vw; /* Adjust font size as needed */
+    font-size: 4vw; 
     z-index: 2;
+    animation: phoneMessageOpenAnimation 1s ease-in-out forwards;
+}
+
+@keyframes phoneMessageOpenAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(50%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Media query for screens with max width 768px (mobile devices) */
