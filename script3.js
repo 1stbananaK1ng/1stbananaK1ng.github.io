@@ -92,7 +92,6 @@ function getContent(page) {
                     <img src="images/roblox game.gif" alt="gaming" style="max-width: 100%; height: auto;">
                 </div>
             `;
-        // Add more cases as needed
         default:
             return '';
     }
